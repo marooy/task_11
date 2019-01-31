@@ -6,11 +6,7 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      {% if not user.is_anonymous%}
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'restaurant-create' %}">Create Restaurant</a>
-      </li>
-      {% endif %}
+      
       {% if user.is_anonymous%}
       <li class="nav-item">
         <a class="nav-link" href="{% url 'signup' %}">Signup</a>
@@ -18,15 +14,22 @@
       <li class="nav-item">
         <a class="nav-link" href="{% url 'signin' %}">Signin</a>
       </li>
-      {% endif %}
-       {% if not user.is_anonymous%}
+     
+      {% else %}
       <li class="nav-item">
         <a class="nav-link" href="{% url 'signout' %}">Signout</a>
       </li>
+
       <li class="nav-item">
         <a class="nav-link" href="#">{{user.username}}</a>
       </li>
+
+       <li class="nav-item">
+        <a class="nav-link" href="{% url 'restaurant-create' %}">Create Restaurant</a>
+      </li>
+
       {% endif %}
+
     </ul>
     
     <form class="form-inline my-2 my-lg-0">
